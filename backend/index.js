@@ -1,15 +1,17 @@
 const express = require("express");
+
+const cors = require("cors");
+
+app.use(cors());
+app.use(express.json());
+
+const rootRouter = require("./routes/index");
+app.use("/api/v1", rootRouter);
 const app =express();
 
 
 
-app.post("/signup",(res,req));
-
-
-app.get('/signin',(req,res));
-
-app.put('/update'(res,req));
-
+app.listen(3000);
 
 
 
