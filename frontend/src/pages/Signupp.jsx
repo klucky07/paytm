@@ -13,7 +13,7 @@ export const Signup = () => {
   const [password, setPassword] = useState("");
 
   return <div className="bg-slate-300 h-screen flex justify-center">
-pass is {password}
+
     <div className="flex flex-col justify-center">
       <div className="rounded-lg bg-white w-80 text-center p-2 h-max px-4">
         <Heading label={"Sign up"} />
@@ -33,12 +33,13 @@ pass is {password}
         }} placeholder="123456" label={"Password"} />
         <div className="pt-4">
           <Button onClick={async() => {
-           await axios.post("http://localhost:3000/api/v1/user/signup", {
+          const response= await axios.post("http://localhost:3000/api/v1/user/signup", {
               username,
               firstName,
               lastName,
               password
-            })
+            });
+            localStorage.setItem("token",response.data.token);
           }} label={"Sign up"} />
         </div>
         <BottomWarning label={"Already have an account?"} buttonText={"Sign in"} to={"/signin"} />
